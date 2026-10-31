@@ -1,9 +1,0 @@
-{
-  "pluginId": "neobase.processus",
-  "repo": "NDesumeur/neobase-plugin-processus",
-  "version": "1.0.0",
-  "sha256": "1ff613ca803d05148a120db9b5527f14d34504f0cdce22a0ad58c0dfb8e873f8",
-  "approvedAt": "2026-10-31T16:39:32.109Z",
-  "neobase": ">=4.0.0",
-  "signature": "yCoBN3LZvzihirpfSSp8cdLJZ9GOVM6KsbMu3HSZoOCrgCj4k87CS8Wq2WHuX3aCXLhQ7D0QTUPHp96wKGpECA=="
-}
