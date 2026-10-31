@@ -1,0 +1,19 @@
+{
+  "id": "neobase.processus",
+  "name": "Processus",
+  "version": "1.0.0",
+  "author": "NDesumeur",
+  "description": "Les programmes regroupés par nom, avec processeur et mémoire, actualisés toutes les 2 secondes.",
+  "icon": "icon.png",
+  "entry": "index.js",
+  "view": "processus",
+  "neobase": ">=4.0.0",
+  "type": "app",
+  "category": "Système",
+  "mobile": false,
+  "system": false,
+  "dependencies": {},
+  "permissions": [
+    "full"
+  ]
+}

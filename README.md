@@ -1,0 +1,11 @@
+# Processus
+
+Les programmes regroupés par nom, avec processeur et mémoire, actualisés toutes les 2 secondes.
+
+Ses données sont rangées dans le dossier du plugin, que NeoBase sauvegarde (synchro cloud comprise). Au premier lancement, il reprend ce que tu avais déjà dans NeoBase.
+
+## Installer
+
+Dans NeoBase : **NeoStore → À découvrir → Processus → Installer**.
+
+Développer un plugin : voir le [SDK NeoBase](https://github.com/NDesumeur/neobase-sdk).
