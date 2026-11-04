@@ -1,9 +1,9 @@
 {
   "pluginId": "neodex.processus",
   "repo": "NDesumeur/neodex-plugin-processus",
-  "version": "1.0.2",
-  "sha256": "ac12adf678776ff5ac3bc1ca381ad56a227f1fca1595b271e505e0a258fe1fb4",
-  "approvedAt": "2026-11-01T00:16:26.469Z",
+  "version": "1.1.0",
+  "sha256": "3bf899bc31da493296cd7cbdcde25515aacc505774da7f2c2036f4668199df50",
+  "approvedAt": "2026-11-04T10:05:10.923Z",
   "neobase": ">=4.0.0",
-  "signature": "zhhKnnqqi2iIke04ysyvf/pehUutqcubrKJvngIBIZvYQdGDT6cfRUj9Jr+YHWnwFbGkxDIcVWwS8tUT8vfqCg=="
+  "signature": "HWXPuDtoAOA0LsAw3gt8zwdm27+K16BkZiB8Qia5OktmzLqStqBmnAxM+XgO86Lr8ulJO5QkNHrCjAHhdnXiCw=="
 }
