@@ -1,6 +1,6 @@
 // Processus : ton appli d'origine (HTML et code inchangés), livrée en plugin.
 // Ses données sont dans le dossier du plugin, que NeoBase sauvegarde (synchro cloud et sauvegardes) ; à la première ouverture elle reprend ce que tu avais dans NeoBase.
-// Elle demande l'accès complet pour utiliser les outils d'interface de NeoBase. NeoBase ne l'ouvre que si elle est signée.
+// Elle tourne dans le bac à sable de NeoBase, avec ses outils d'interface (ctx.host) et seulement les autorisations de son plugin.json.
 const HTML = "<div class=\"appWrap\">\n      <div class=\"agHead\"><span class=\"label\">Processus</span><span class=\"hint\" id=\"prInfo\"></span></div>\n      <div class=\"row\"><input class=\"f\" id=\"prFilter\" placeholder=\"Filtrer…\" spellcheck=\"false\" style=\"flex:1\"><select class=\"f\" id=\"prSort\" style=\"width:220px\"><option value=\"cpu\">Trier : processeur</option><option value=\"mem\">Trier : mémoire</option><option value=\"name\">Trier : nom</option></select></div>\n      <div class=\"sysCard px\"><div class=\"prRow head\"><span></span><span>Programme</span><span>Processeur</span><span>Mémoire</span><span></span></div><div id=\"prList\"></div></div>\n      <div class=\"hint\">« Fermer » force la fermeture, comme « Fin de tâche » dans le Gestionnaire des tâches. Les programmes indispensables à Windows sont protégés.</div>\n    </div>";
 /*CSS-MOVED*/ const CSS = `.prRow{display:grid;grid-template-columns:24px 1fr 100px 100px 90px;gap:12px;align-items:center;padding:6px 4px;font-size:15px;border-bottom:1px solid rgba(255,255,255,.05)}
 .prRow img{width:20px;height:20px;object-fit:contain}
@@ -24,7 +24,6 @@ export default async function (ctx) {
   const $ = id => id === "procsApp" ? view : (view.querySelector('#' + id) || document.getElementById(id));  // les identifiants de ta vue d'abord, puis ceux de la page (fenêtres, menus)
   const doc = async n => { try { return await folder.read(n); } catch { return null; } };
   const __icon = () => ctx.icon;  // l'icône de ce plugin
-  const TOKEN = ctx.token;  // le jeton du serveur local de NeoBase
   // ---- ton code d'origine ----
 const gb = b => (b / 1073741824).toFixed(b < 107374182400 ? 1 : 0).replace('.', ',') + ' Go';
 const mo = b => b >= 1073741824 ? gb(b) : Math.round(b / 1048576) + ' Mo';
@@ -43,7 +42,7 @@ async function prOpen() {
   $('prInfo').textContent = list.length + ' processus · ' + groups.size + ' programmes · processeur ' + Math.round(cpu) + ' %';  // no memory total: shared memory would be counted several times
   $('prList').replaceChildren(...rows.slice(0, 150).map(gr => {
     const r = el('div', 'prRow'), ic = el('img'), n = el('div', 'tn'), x = el('button', 'btn px', 'Fermer');
-    ic.src = gr.path ? '/api/icon?t=' + TOKEN + '&p=' + encodeURIComponent(gr.path) : ''; ic.onerror = () => ic.style.visibility = 'hidden';
+    ic.onerror = () => ic.style.visibility = 'hidden'; if (gr.path) neo.exeIcon(gr.path).then(u => { ic.src = u; }, () => ic.onerror()); else ic.onerror();  // l'icône du programme, donnée par NeoBase
     n.append(gr.name + (gr.procs.length > 1 ? ' (' + gr.procs.length + ')' : ''), el('small', '', gr.title || gr.path || ''));
     x.disabled = gr.protected; x.title = gr.protected ? 'Programme de Windows : le fermer pourrait bloquer le PC' : 'Forcer la fermeture';
     x.onclick = async () => {
