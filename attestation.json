@@ -1,6 +1,6 @@
 {
-  "pluginId": "neobase.processus",
-  "repo": "NDesumeur/neobase-plugin-processus",
+  "pluginId": "neodex.processus",
+  "repo": "NDesumeur/neodex-plugin-processus",
   "version": "1.0.2",
   "sha256": "ac12adf678776ff5ac3bc1ca381ad56a227f1fca1595b271e505e0a258fe1fb4",
   "approvedAt": "2026-11-01T00:16:26.469Z",
