@@ -1,7 +1,7 @@
 {
   "id": "neodex.processus",
   "name": "Processus",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "author": "NDesumeur",
   "description": "Les programmes regroupés par nom, avec processeur et mémoire, actualisés toutes les 2 secondes.",
   "icon": "icon.png",
