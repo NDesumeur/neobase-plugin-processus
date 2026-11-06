@@ -10,6 +10,8 @@
   "neobase": ">=4.0.0",
   "type": "app",
   "category": "Système",
+  "syncMode": "aucune",
+  "syncInfo": "Rien n'est synchronisé.",
   "mobile": false,
   "system": true,
   "dependencies": {},
